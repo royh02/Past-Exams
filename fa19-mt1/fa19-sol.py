@@ -1,17 +1,14 @@
 def parabola(x):
-
     """A parabola function (for testing the again function)."""
     return (x-3) * (x-6)
 
 
 def vee(x):
-
     """A V-shaped function (for testing the again function)."""
     return abs(x-2)
 
 
 def again(f):
-
     """Return the smallest non-negative integer n such that f(n) == f(m) for some m < n.
     >>> again(parabola) # parabola(4) == parabola(5)
     5
@@ -33,14 +30,13 @@ def again(f):
     #
     # n = 1
     # _______:
-    # 
+    #
     #     m = 0
     #     ________:
     #         ________:
     #             ________
     #         ________
     #     n = n + 1
-
 
 
 def sign(x):
@@ -54,7 +50,6 @@ def sign(x):
 
 
 def ramp(n):
-
     """Return whether non-negative integer N has more increases than decreases.
     >>> ramp(123) # 2 increases (1 -> 2, 2 -> 3) and 0 decreases
     True
@@ -71,18 +66,16 @@ def ramp(n):
         n, last, tally = n // 10, n % 10, tally + 1 if last > n % 10 else tally - 1
     return tally > 0
 
-
     # Original Skeleton
-    # 
+    #
     # n, last, tally = _______, _______, 0
-    # 
+    #
     # while n:
     #     n, last, tally = n // 10, n % 10, _______
     # return _______
 
 
 def over_under(y):
-
     """Return a function that takes X and returns:
     -1 if X is less than Y
     0 if X is equal to Y
@@ -101,7 +94,6 @@ def over_under(y):
 
 
 def process(n, tally, result):
-
     """Process all pairs of adjacent digits in N using functions TALLY and RESULT."""
     while n >= 10:
         tally, result = tally(n % 100 // 10, n % 10)
@@ -110,7 +102,6 @@ def process(n, tally, result):
 
 
 def ups(k):
-
     """Return tally and result functions that compute whether N has exactly K increases.
     >>> f, g = ups(3)
     >>> process(1200849, f, g) # Exactly 3 increases: 1 -> 2, 0 -> 8, 4 -> 9
@@ -124,12 +115,11 @@ def ups(k):
     """
     def f(left, right):
         return ups(min(k, k + sign(left - right)))
-    
+
     return f, lambda: k == 0
 
 
 def at_most(n, k):
-
     """Return whether non-negative integer N has at most K increases.
     >>> at_most(567, 3)
     True
